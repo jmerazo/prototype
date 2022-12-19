@@ -1,0 +1,11 @@
+{% extends 'layouts/layout.html' %}
+{% block tittle %} Home | Alpha{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/index.css')}}">
+</head>
+
+<h2>Home Page</h2>
+<p>Welcome back, {{ username }}!</p>
+{% endblock%}
