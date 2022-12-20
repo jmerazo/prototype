@@ -96,3 +96,14 @@ def profile():
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+@app.route('/alpha/collection')
+def collection():
+    # Check if user is loggedin
+    if 'loggedin' in session:
+        idu = session['id']
+        account = loginController.profileAccount(idu)
+        # Show the profile page with account info
+        return render_template('collection.html', account=account)
+    # User is not loggedin redirect to login page
+    return redirect(url_for('login'))

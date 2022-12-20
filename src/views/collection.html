@@ -1,0 +1,20 @@
+{% extends 'layouts/layout.html' %}
+
+{% block tittle %}Money Collection | Alpha{% endblock %}
+
+{% block content %}
+<h2>Daily cash collection</h2>
+<div>
+    <p>Your account details are below:</p>
+    <span>Date</span><input type="date">
+    <span>Zona</span><select name="" id=""><option value="" selected disabled>Select zone</option></select><br>
+    <span>Mensajero</span><select name="" id=""><option value="" selected disabled>Select delivery courier</option></select>
+    <span>PAMI</span>
+    <select name="pami" id="pami">
+        <option value="" selected disabled>Select PAMI</option>
+        <option value="3864">PAMI 3864 - Yerson Muñoz Erazo</option>
+        <option value="3864">PAMI 5596 - Asael Muñoz Martinez</option>
+    </select><br>
+    <span>Number guide: </span><input type="text" placeholder="Input number"><button type="submit">Add</button>
+</div>
+{% endblock %}
