@@ -99,11 +99,14 @@ def profile():
 
 @app.route('/alpha/collection')
 def collection():
-    # Check if user is loggedin
     if 'loggedin' in session:
         idu = session['id']
         account = loginController.profileAccount(idu)
-        # Show the profile page with account info
         return render_template('collection.html', account=account)
-    # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+@app.route('/alpha/utils/guide-search/<guide>', methods=['GET', 'POST'])
+def guideData(guide):
+    idu = session['id']
+    guideData = 'https://www3.interrapidisimo.com/ApiServInter/api/Mensajeria/ObtenerRastreoGuias?guias=' + guide
+    return redirect(url_for('collection', guideData = guideData))
