@@ -1,9 +1,11 @@
 from src import app
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, make_response
 from src.controllers.login import LoginController
+from src.controllers.utils import DeliveryController
 import re, bcrypt
 
 loginController = LoginController()
+deliveryController = DeliveryController()
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -110,3 +112,9 @@ def guideData(guide):
     idu = session['id']
     guideData = 'https://www3.interrapidisimo.com/ApiServInter/api/Mensajeria/ObtenerRastreoGuias?guias=' + guide
     return redirect(url_for('collection', guideData = guideData))
+
+@app.route('/api/alpha/delivery/list', methods=['GET', 'POST'])
+def listDelivery():
+    dataDelivery = deliveryController.listDelivery()
+    print('data router', jsonify(dataDelivery))
+    return make_response(jsonify(dataDelivery), 200)
